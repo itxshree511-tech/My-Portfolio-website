@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block title %}{{ project.title }} | Project Details{% endblock %}
+{% block content %}
+<main class="mx-auto mt-28 max-w-7xl px-4">
+  <a href="{% url 'portfolio:home' %}#projects" class="text-sm underline">Back to projects</a>
+  <section class="mt-4 grid gap-8 lg:grid-cols-2">
+    <div class="glass-card rounded-3xl p-4">
+      <img src="{{ project.cover_image.url }}" alt="{{ project.title }}" class="h-80 w-full rounded-2xl object-cover">
+      {% if project.screenshots.all %}
+      <div class="swiper mt-4 projectSwiper">
+        <div class="swiper-wrapper">
+          {% for shot in project.screenshots.all %}
+          <div class="swiper-slide"><img src="{{ shot.image.url }}" class="h-56 w-full rounded-xl object-cover" alt="{{ shot.caption|default:project.title }}"></div>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+    </div>
+    <div>
+      <p class="text-xs uppercase tracking-[0.25em] text-violet-300">{{ project.get_category_display }}</p>
+      <h1 class="mt-2 font-heading text-4xl font-bold">{{ project.title }}</h1>
+      <p class="mt-4 text-slate-300">{{ project.description }}</p>
+      <div class="mt-5 flex flex-wrap gap-2">{% for tech in project.tech_list %}<span class="chip">{{ tech }}</span>{% endfor %}</div>
+      <div class="mt-6 flex gap-4">
+        {% if project.live_demo_link %}<a href="{{ project.live_demo_link }}" target="_blank" class="magnetic-btn rounded-xl border border-white/20 px-5 py-3">Live Demo</a>{% endif %}
+        {% if project.github_link %}<a href="{{ project.github_link }}" target="_blank" class="magnetic-btn rounded-xl border border-white/20 px-5 py-3">GitHub</a>{% endif %}
+      </div>
+    </div>
+  </section>
+
+  <section class="mt-16">
+    <h2 class="section-title">Related Projects</h2>
+    <div class="mt-6 grid gap-6 md:grid-cols-3">
+      {% for item in related_projects %}
+      <a href="{% url 'portfolio:project_detail' item.slug %}" class="project-card">
+        <img src="{{ item.cover_image.url }}" class="h-40 w-full rounded-xl object-cover" alt="{{ item.title }}">
+        <h3 class="mt-3 text-lg font-semibold">{{ item.title }}</h3>
+      </a>
+      {% empty %}
+      <p class="text-slate-300">No related projects found.</p>
+      {% endfor %}
+    </div>
+  </section>
+</main>
+{% endblock %}

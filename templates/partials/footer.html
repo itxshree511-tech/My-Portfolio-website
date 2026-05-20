@@ -1,0 +1,15 @@
+﻿<footer class="mt-24 border-t border-white/10 py-10">
+  <div class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-5 px-4 text-center md:flex-row md:text-left">
+    <div>
+      <p class="font-heading text-xl font-bold"><span class="text-fuchsia-400">&lt;/&gt;</span> {% if site_settings %}{{ site_settings.brand_name }}{% else %}Sheraz{% endif %}</p>
+      <p class="mt-1 text-sm text-slate-400">Building cinematic digital products with Django.</p>
+    </div>
+    <div class="flex gap-4 text-sm">
+      <a href="{% if site_settings %}{{ site_settings.github_url }}{% else %}https://github.com{% endif %}" class="footer-link">GitHub</a>
+      <a href="{% if site_settings %}{{ site_settings.linkedin_url }}{% else %}https://linkedin.com{% endif %}" class="footer-link">LinkedIn</a>
+      <a href="mailto:{% if site_settings %}{{ site_settings.contact_email }}{% else %}owner@portfolio.dev{% endif %}" class="footer-link">Email</a>
+      <a href="https://wa.me/{% if site_settings %}{{ site_settings.whatsapp_number|cut:'+' }}{% else %}923001234567{% endif %}" class="footer-link">WhatsApp</a>
+    </div>
+    <p class="text-xs text-slate-500">Copyright {% now "Y" %} {% if site_settings %}{{ site_settings.brand_name }}{% else %}Sheraz{% endif %}. All rights reserved.</p>
+  </div>
+</footer>

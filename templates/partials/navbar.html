@@ -1,0 +1,30 @@
+<header id="siteHeader" class="fixed left-0 top-0 z-30 w-full transition-all duration-500">
+  <div class="mx-auto mt-4 flex max-w-7xl items-center justify-between rounded-2xl border border-white/15 bg-slate-900/45 px-5 py-3 backdrop-blur-xl lg:px-8">
+    <a href="{% url 'portfolio:home' %}" class="flex items-center gap-3 font-heading text-xl font-bold tracking-wide">
+      <span class="logo-badge">
+        <span class="logo-inner"></span>
+      </span>
+      {% if site_settings %}{{ site_settings.brand_name }}{% else %}SHERAZ{% endif %}
+    </a>
+
+    <nav class="hidden items-center gap-8 text-sm md:flex">
+      <a href="#about" class="nav-link">About</a>
+      <a href="#skills" class="nav-link">Skills</a>
+      <a href="#projects" class="nav-link">Projects</a>
+      <a href="#services" class="nav-link">Services</a>
+      <a href="#contact" class="nav-link">Contact</a>
+    </nav>
+
+    <button id="menuBtn" class="md:hidden rounded-lg border border-white/20 px-3 py-2 text-sm">Menu</button>
+  </div>
+
+  <div id="mobileMenu" class="mx-4 mt-3 hidden rounded-2xl border border-white/15 bg-slate-900/80 p-4 backdrop-blur-xl md:hidden">
+    <div class="flex flex-col gap-4 text-sm">
+      <a href="#about" class="nav-link">About</a>
+      <a href="#skills" class="nav-link">Skills</a>
+      <a href="#projects" class="nav-link">Projects</a>
+      <a href="#services" class="nav-link">Services</a>
+      <a href="#contact" class="nav-link">Contact</a>
+    </div>
+  </div>
+</header>

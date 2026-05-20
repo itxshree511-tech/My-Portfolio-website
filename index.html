@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sheraz | Full Stack Django Developer</title>
+  <meta name="description" content="Sheraz portfolio - Full Stack Django Developer building modern web experiences.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            deep: '#0F172A',
+            mid: '#111827',
+            panel: '#1E1B4B'
+          },
+          fontFamily: {
+            heading: ['Space Grotesk', 'sans-serif'],
+            body: ['Inter', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  <link rel="stylesheet" href="static/css/main.css">
+</head>
+<body class="bg-deep text-slate-100 font-body selection:bg-fuchsia-500/40">
+  <div id="mouseGlow" class="pointer-events-none fixed left-0 top-0 z-40 h-40 w-40 -translate-x-1/2 -translate-y-1/2 rounded-full bg-fuchsia-500/20 blur-3xl"></div>
+  <canvas id="bg3d" class="fixed inset-0 -z-20"></canvas>
+  <div class="fixed inset-0 -z-10 bg-[radial-gradient(circle_at_10%_10%,rgba(168,85,247,.22),transparent_33%),radial-gradient(circle_at_90%_20%,rgba(236,72,153,.2),transparent_30%),linear-gradient(130deg,#0f172a_0%,#111827_50%,#1e1b4b_100%)]"></div>
+  <div class="fixed inset-0 -z-10 bg-grid opacity-[0.13]"></div>
+  <div id="particles"></div>
+
+  <header id="siteHeader" class="fixed left-0 top-0 z-30 w-full transition-all duration-500">
+    <div class="mx-auto mt-4 flex max-w-7xl items-center justify-between rounded-2xl border border-white/15 bg-slate-900/45 px-5 py-3 backdrop-blur-xl lg:px-8">
+      <a href="#top" class="flex items-center gap-3 font-heading text-xl font-bold tracking-wide">
+        <span class="logo-badge"><span class="logo-inner">S</span></span>
+        SHERAZ
+      </a>
+      <nav class="hidden items-center gap-8 text-sm md:flex">
+        <a href="#about" class="nav-link">About</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#services" class="nav-link">Services</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+      <button id="menuBtn" class="md:hidden rounded-lg border border-white/20 px-3 py-2 text-sm">Menu</button>
+    </div>
+    <div id="mobileMenu" class="mx-4 mt-3 hidden rounded-2xl border border-white/15 bg-slate-900/80 p-4 backdrop-blur-xl md:hidden">
+      <div class="flex flex-col gap-4 text-sm">
+        <a href="#about" class="nav-link">About</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#services" class="nav-link">Services</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="relative mx-auto flex min-h-screen max-w-7xl items-center px-4 pb-12 pt-36">
+      <div class="hero-social hidden lg:flex">
+        <a href="https://instagram.com" target="_blank" aria-label="Instagram" class="social-dot">
+          <svg viewBox="0 0 24 24" fill="none" class="h-5 w-5"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.8"></rect><circle cx="12" cy="12" r="4.2" stroke="currentColor" stroke-width="1.8"></circle><circle cx="17.6" cy="6.5" r="1" fill="currentColor"></circle></svg>
+        </a>
+        <a href="https://www.upwork.com/freelancers/~01f62281d4dc6847ef?viewMode=1" target="_blank" aria-label="Upwork" class="social-dot">
+          <svg viewBox="0 0 24 24" fill="none" class="h-5 w-5" aria-hidden="true">
+            <rect x="2.8" y="2.8" width="18.4" height="18.4" rx="4.2" stroke="currentColor" stroke-width="1.7"></rect>
+            <path d="M7 9.6v4.1c0 1.6 1 2.7 2.5 2.7c1.1 0 2-.5 2.5-1.5l1.5-3.3l1.6 3.4c.5 1 1.4 1.4 2.4 1.4h.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </a>
+        <a href="https://github.com/itxshree511-tech" target="_blank" aria-label="GitHub" class="social-dot">
+          <svg viewBox="0 0 24 24" fill="none" class="h-5 w-5"><path d="M9.2 18.4c-3.8 1.2-3.8-1.8-5.4-2.2m10.8 4.4V17.6a2.6 2.6 0 0 0-.72-2.02c2.4-.28 4.92-1.18 4.92-5.34a4.2 4.2 0 0 0-1.12-2.9 3.9 3.9 0 0 0-.06-2.86s-.92-.3-3.02 1.1a10.4 10.4 0 0 0-5.5 0c-2.1-1.4-3.02-1.1-3.02-1.1a3.9 3.9 0 0 0-.06 2.86 4.2 4.2 0 0 0-1.12 2.9c0 4.14 2.5 5.06 4.9 5.34A2.6 2.6 0 0 0 9.2 17.6V20.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </a>
+      </div>
+      <div class="grid w-full gap-10 lg:grid-cols-2 lg:items-center">
+        <div data-aos="fade-up" data-aos-duration="1200">
+          <p class="mb-4 text-sm uppercase tracking-[0.35em] text-slate-300">Full Stack Developer</p>
+          <h1 class="text-5xl font-bold leading-tight md:text-7xl">
+            Hi,<br>I'm <span class="gradient-text">Sheraz</span><br>
+            <span id="typedRole" class="hero-typed text-slate-100"></span>
+          </h1>
+          <p class="mt-6 max-w-xl text-lg text-slate-300">I build modern Django systems, responsive interfaces, and premium web experiences with cinematic interactions.</p>
+          <div class="mt-8 flex flex-wrap gap-4">
+            <a href="#projects" class="magnetic-btn rounded-xl bg-gradient-to-r from-violet-500 via-purple-500 to-pink-500 px-7 py-3 font-semibold">View Projects</a>
+            <a href="#contact" class="magnetic-btn rounded-xl border border-fuchsia-300/50 px-7 py-3 font-semibold">Hire Me</a>
+          </div>
+        </div>
+        <div class="relative" data-aos="zoom-in" data-aos-duration="1200">
+          <div class="absolute -left-10 -top-8 h-28 w-28 rounded-full bg-violet-500/45 blur-3xl"></div>
+          <div class="absolute -bottom-8 right-10 h-24 w-24 rounded-full bg-pink-500/50 blur-3xl"></div>
+          <div class="hero-visual">
+            <div class="glass-card profile-wrap tilt-card">
+              <img src="static/images/my%20pf%20image.jpg" alt="Sheraz profile photo" class="profile-image">
+            </div>
+            <div class="glass-card hero-mini hero-mini-top floating">
+              <p class="text-xs text-slate-300">Current Focus</p>
+              <p class="mt-1 text-sm font-semibold">Premium UI + Django</p>
+            </div>
+            <div class="glass-card hero-mini hero-mini-mid floating" style="animation-delay:.2s">
+              <p class="text-xs text-slate-300">Projects</p>
+              <p class="mt-1 text-xl font-bold"><span class="counter" data-target="20">0</span>+</p>
+            </div>
+            <div class="glass-card hero-mini hero-mini-bottom floating" style="animation-delay:.35s">
+              <p class="text-xs text-slate-300">Experience</p>
+              <p class="mt-1 text-xl font-bold"><span class="counter" data-target="2">0</span>+ Years</p>
+            </div>
+            <div class="absolute bottom-6 left-6 rounded-2xl border border-white/15 bg-slate-900/40 px-3 py-2 text-xs text-slate-200 backdrop-blur-xl">
+              Django • Tailwind • JS
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="mx-auto mt-12 max-w-7xl px-4" data-aos="fade-up">
+      <div class="glass-card rounded-3xl p-8 md:p-10">
+        <h2 class="section-title">About Me</h2>
+        <p class="mt-4 max-w-4xl text-slate-300">I am a Django-focused full stack developer building scalable web applications and business-ready products.</p>
+        <div class="mt-8 grid gap-4 md:grid-cols-3">
+          <div class="stat-box"><p class="text-sm text-slate-300">Projects</p><p class="text-3xl font-bold">20+</p></div>
+          <div class="stat-box"><p class="text-sm text-slate-300">Client Satisfaction</p><p class="text-3xl font-bold">98%</p></div>
+          <div class="stat-box"><p class="text-sm text-slate-300">Delivery Speed</p><p class="text-3xl font-bold">Fast</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="mx-auto mt-20 max-w-7xl px-4">
+      <div class="mb-8" data-aos="fade-up"><h2 class="section-title">Skills</h2></div>
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div class="skill-card"><h3>HTML</h3><div class="progress"><span style="width:95%"></span></div></div>
+        <div class="skill-card"><h3>CSS</h3><div class="progress"><span style="width:94%"></span></div></div>
+        <div class="skill-card"><h3>JavaScript</h3><div class="progress"><span style="width:88%"></span></div></div>
+        <div class="skill-card"><h3>Tailwind CSS</h3><div class="progress"><span style="width:92%"></span></div></div>
+        <div class="skill-card"><h3>Python</h3><div class="progress"><span style="width:90%"></span></div></div>
+        <div class="skill-card"><h3>Django</h3><div class="progress"><span style="width:91%"></span></div></div>
+      </div>
+    </section>
+
+    <section id="projects" class="mx-auto mt-20 max-w-7xl px-4">
+      <h2 class="section-title mb-8">Featured Projects</h2>
+      <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+        <article class="project-card group">
+          <div class="relative overflow-hidden rounded-2xl">
+            <img src="static/images/projects/image.png" alt="Dashboard project" class="h-56 w-full object-cover transition duration-500 group-hover:scale-110">
+            <div class="absolute left-3 top-3 rounded-lg border border-white/25 bg-slate-900/60 px-2 py-1 text-[11px] uppercase tracking-[0.18em] text-slate-200 backdrop-blur-lg">Web App</div>
+            <div class="absolute bottom-3 right-3 flex gap-2">
+              <a href="https://www.upwork.com/freelancers/~01f62281d4dc6847ef?viewMode=1" target="_blank" aria-label="Project Upwork" class="social-dot h-9 w-9 rounded-lg">
+                <svg viewBox="0 0 24 24" fill="none" class="h-4 w-4" aria-hidden="true">
+                  <rect x="2.8" y="2.8" width="18.4" height="18.4" rx="4.2" stroke="currentColor" stroke-width="1.7"></rect>
+                  <path d="M7 9.6v4.1c0 1.6 1 2.7 2.5 2.7c1.1 0 2-.5 2.5-1.5l1.5-3.3l1.6 3.4c.5 1 1.4 1.4 2.4 1.4h.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+              </a>
+              <a href="https://github.com/itxshree511-tech" target="_blank" aria-label="Project GitHub" class="social-dot h-9 w-9 rounded-lg">
+                <svg viewBox="0 0 24 24" fill="none" class="h-4 w-4"><path d="M9.2 18.4c-3.8 1.2-3.8-1.8-5.4-2.2m10.8 4.4V17.6a2.6 2.6 0 0 0-.72-2.02c2.4-.28 4.92-1.18 4.92-5.34a4.2 4.2 0 0 0-1.12-2.9 3.9 3.9 0 0 0-.06-2.86s-.92-.3-3.02 1.1a10.4 10.4 0 0 0-5.5 0c-2.1-1.4-3.02-1.1-3.02-1.1a3.9 3.9 0 0 0-.06 2.86 4.2 4.2 0 0 0-1.12 2.9c0 4.14 2.5 5.06 4.9 5.34A2.6 2.6 0 0 0 9.2 17.6V20.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              </a>
+            </div>
+          </div>
+          <h3 class="mt-4 text-xl font-semibold">Analytics Dashboard</h3>
+          <p class="mt-2 text-sm text-slate-300">Role-based analytics system with charts, user permissions, and exports.</p>
+          <div class="mt-3 flex flex-wrap gap-2"><span class="chip">Django</span><span class="chip">Chart.js</span><span class="chip">Tailwind</span></div>
+        </article>
+        <article class="project-card group">
+          <div class="relative overflow-hidden rounded-2xl">
+            <img src="static/images/projects/e.com.jpg" alt="Ecommerce project" class="h-56 w-full object-cover transition duration-500 group-hover:scale-110">
+            <div class="absolute left-3 top-3 rounded-lg border border-white/25 bg-slate-900/60 px-2 py-1 text-[11px] uppercase tracking-[0.18em] text-slate-200 backdrop-blur-lg">Ecommerce</div>
+            <div class="absolute bottom-3 right-3 flex gap-2">
+              <a href="https://www.upwork.com/freelancers/~01f62281d4dc6847ef?viewMode=1" target="_blank" aria-label="Project Upwork" class="social-dot h-9 w-9 rounded-lg">
+                <svg viewBox="0 0 24 24" fill="none" class="h-4 w-4" aria-hidden="true">
+                  <rect x="2.8" y="2.8" width="18.4" height="18.4" rx="4.2" stroke="currentColor" stroke-width="1.7"></rect>
+                  <path d="M7 9.6v4.1c0 1.6 1 2.7 2.5 2.7c1.1 0 2-.5 2.5-1.5l1.5-3.3l1.6 3.4c.5 1 1.4 1.4 2.4 1.4h.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+              </a>
+              <a href="https://github.com/itxshree511-tech" target="_blank" aria-label="Project GitHub" class="social-dot h-9 w-9 rounded-lg">
+                <svg viewBox="0 0 24 24" fill="none" class="h-4 w-4"><path d="M9.2 18.4c-3.8 1.2-3.8-1.8-5.4-2.2m10.8 4.4V17.6a2.6 2.6 0 0 0-.72-2.02c2.4-.28 4.92-1.18 4.92-5.34a4.2 4.2 0 0 0-1.12-2.9 3.9 3.9 0 0 0-.06-2.86s-.92-.3-3.02 1.1a10.4 10.4 0 0 0-5.5 0c-2.1-1.4-3.02-1.1-3.02-1.1a3.9 3.9 0 0 0-.06 2.86 4.2 4.2 0 0 0-1.12 2.9c0 4.14 2.5 5.06 4.9 5.34A2.6 2.6 0 0 0 9.2 17.6V20.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              </a>
+            </div>
+          </div>
+          <h3 class="mt-4 text-xl font-semibold">Ecommerce Store</h3>
+          <p class="mt-2 text-sm text-slate-300">Complete store with product catalog, cart, checkout, and admin management.</p>
+          <div class="mt-3 flex flex-wrap gap-2"><span class="chip">Django</span><span class="chip">Stripe</span><span class="chip">JS</span></div>
+        </article>
+        <article class="project-card group">
+          <div class="relative overflow-hidden rounded-2xl">
+            <img src="static/images/projects/agency.jpg" alt="Agency project" class="h-56 w-full object-cover transition duration-500 group-hover:scale-110">
+            <div class="absolute left-3 top-3 rounded-lg border border-white/25 bg-slate-900/60 px-2 py-1 text-[11px] uppercase tracking-[0.18em] text-slate-200 backdrop-blur-lg">Business Site</div>
+            <div class="absolute bottom-3 right-3 flex gap-2">
+              <a href="https://www.upwork.com/freelancers/~01f62281d4dc6847ef?viewMode=1" target="_blank" aria-label="Project Upwork" class="social-dot h-9 w-9 rounded-lg">
+                <svg viewBox="0 0 24 24" fill="none" class="h-4 w-4" aria-hidden="true">
+                  <rect x="2.8" y="2.8" width="18.4" height="18.4" rx="4.2" stroke="currentColor" stroke-width="1.7"></rect>
+                  <path d="M7 9.6v4.1c0 1.6 1 2.7 2.5 2.7c1.1 0 2-.5 2.5-1.5l1.5-3.3l1.6 3.4c.5 1 1.4 1.4 2.4 1.4h.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+              </a>
+              <a href="https://github.com/itxshree511-tech" target="_blank" aria-label="Project GitHub" class="social-dot h-9 w-9 rounded-lg">
+                <svg viewBox="0 0 24 24" fill="none" class="h-4 w-4"><path d="M9.2 18.4c-3.8 1.2-3.8-1.8-5.4-2.2m10.8 4.4V17.6a2.6 2.6 0 0 0-.72-2.02c2.4-.28 4.92-1.18 4.92-5.34a4.2 4.2 0 0 0-1.12-2.9 3.9 3.9 0 0 0-.06-2.86s-.92-.3-3.02 1.1a10.4 10.4 0 0 0-5.5 0c-2.1-1.4-3.02-1.1-3.02-1.1a3.9 3.9 0 0 0-.06 2.86 4.2 4.2 0 0 0-1.12 2.9c0 4.14 2.5 5.06 4.9 5.34A2.6 2.6 0 0 0 9.2 17.6V20.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              </a>
+            </div>
+          </div>
+          <h3 class="mt-4 text-xl font-semibold">Creative Agency Site</h3>
+          <p class="mt-2 text-sm text-slate-300">High-converting landing experience with strong branding and lead capture.</p>
+          <div class="mt-3 flex flex-wrap gap-2"><span class="chip">Frontend</span><span class="chip">Animations</span><span class="chip">SEO</span></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="services" class="mx-auto mt-20 max-w-7xl px-4">
+      <h2 class="section-title">Services</h2>
+      <div class="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        <div class="service-card">Web Development</div>
+        <div class="service-card">Django Backend</div>
+        <div class="service-card">UI/UX Design</div>
+        <div class="service-card">Landing Pages</div>
+        <div class="service-card">Responsive Websites</div>
+        <div class="service-card">Website Optimization</div>
+      </div>
+    </section>
+
+    <section class="mx-auto mt-20 max-w-7xl px-4" data-aos="fade-up">
+      <h2 class="section-title">Testimonials</h2>
+      <div class="swiper mt-8 testimonialSwiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <article class="glass-card rounded-3xl p-6">
+              <p class="text-slate-200">"Sheraz delivered exactly what we needed. Smooth process and clean code quality."</p>
+              <p class="mt-4 text-sm text-slate-300">Client - SaaS Founder</p>
+            </article>
+          </div>
+          <div class="swiper-slide">
+            <article class="glass-card rounded-3xl p-6">
+              <p class="text-slate-200">"Fast communication, premium design sense, and strong backend logic."</p>
+              <p class="mt-4 text-sm text-slate-300">Client - Agency Owner</p>
+            </article>
+          </div>
+          <div class="swiper-slide">
+            <article class="glass-card rounded-3xl p-6">
+              <p class="text-slate-200">"Our dashboard performance improved a lot after his optimization work."</p>
+              <p class="mt-4 text-sm text-slate-300">Client - Product Team</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="mx-auto mt-20 max-w-7xl px-4">
+      <div class="grid gap-8 rounded-3xl glass-card p-8 lg:grid-cols-2">
+        <div>
+          <h2 class="section-title">Contact</h2>
+          <p class="mt-3 text-slate-300">Let's build something premium together.</p>
+          <div class="mt-6 space-y-3 text-sm">
+            <a href="mailto:owner@portfolio.dev" class="contact-tab block">Email: itxshree511@gmail.com</a>
+            <a href="https://wa.me/923216763141" class="contact-tab block">WhatsApp: +92 321 676 3141</a>
+            <a href="https://www.upwork.com/freelancers/~01f62281d4dc6847ef?viewMode=1" class="contact-tab block">Upwork</a>
+            <a href="https://github.com/itxshree511-tech/itxshree511-tech" class="contact-tab block">GitHub</a>
+          </div>
+        </div>
+        <div class="rounded-2xl border border-white/20 p-6">
+          <p class="text-lg font-semibold">Ready for freelance work</p>
+          <p class="mt-3 text-slate-300">Available for Django web apps, portfolio websites, and landing pages.</p>
+          <div class="mt-6 grid gap-3">
+            <div class="rounded-xl border border-white/15 bg-white/5 p-3 text-sm">Typical response time: under 2 hours</div>
+            <div class="rounded-xl border border-white/15 bg-white/5 p-3 text-sm">Timezone friendly collaboration</div>
+            <div class="rounded-xl border border-white/15 bg-white/5 p-3 text-sm">Clean delivery with deployment support</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="mt-24 border-t border-white/10 py-10">
+    <div class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-5 px-4 text-center md:flex-row md:text-left">
+      <p class="font-heading text-xl font-bold"><span class="text-fuchsia-400">&lt;/&gt;</span> Sheraz</p>
+      <p class="text-xs text-slate-500">Copyright 2026 Sheraz. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/three@0.164.1/build/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/bundled/lenis.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.1.0/dist/typed.umd.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.8.1/dist/vanilla-tilt.min.js"></script>
+  <script src="static/js/main.js"></script>
+</body>
+</html>
